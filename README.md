@@ -31,8 +31,8 @@ Este projeto demonstra como combinar **Elasticsearch** com **IA generativa (Gemi
 1. Clone o repositório:
 
 ```bash
-git clone <repo-url>
-cd <repo-folder>
+git clone https://github.com/theablade/academic-search.git
+cd academic-search
 ```
 
 2. Instale dependências do Laravel
@@ -58,18 +58,21 @@ GEMINI_API_KEY=<sua-chave-gemini>
 php artisan serve
 
 
-Endpoints da API
+## Endpoints da API
+Prefixo: `/api/artigos`
 | Método | Rota                          | Descrição                             |
 | ------ | ----------------------------- | ------------------------------------- |
-| POST   | `/api/artigos`                | Criar um novo artigo                  |
-| GET    | `/api/artigos`                | Listar todos os artigos               |
-| GET    | `/api/artigos/search/{query}` | Buscar artigos por palavra-chave      |
-| POST   | `/api/artigos/chat`           | Perguntar algo aos artigos (Chat RAG) |
+| POST   | `/`                | Criar um novo artigo                  |
+| GET    | `/`                | Listar todos os artigos               |
+| GET    | `/search/{query}` | Buscar artigos por palavra-chave      |
+| POST   | `/chat`           | Perguntar algo aos artigos (Chat RAG) |
 
-Exemplo JSON - Criar Artigo
+## Exemplo JSON - **Criar artigo:**
 
 Request
 ```bash
+POST /api/artigos
+
 {
   "titulo": "Inteligência Artificial na Educação",
   "autor": "Fulstak",
@@ -92,7 +95,7 @@ Response:
 }
 ```
 
-Exemplo JSON - Buscar Artigos
+## Exemplo JSON - Buscar Artigos
 
 Request
 ```bash
@@ -118,7 +121,7 @@ Response:
 ]
 ```
 
-Exemplo JSON - Chat RAG
+## Exemplo JSON - Chat RAG
 
 Request
 ```bash
@@ -178,6 +181,8 @@ Geração de respostas contextuais baseadas em artigos científicos.
 Base sólida para projetos educativos, acadêmicos e corporativos.
 
 📚 Referências
-
+ [Laravel Documentation](https://laravel.com/docs)
+- [Elasticsearch PHP Client](https://www.elastic.co/guide/en/elasticsearch/client/php-api/current/index.html)
+- [Google Gemini API](https://developers.generativeai.google/)
     
 
