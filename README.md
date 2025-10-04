@@ -1,4 +1,8 @@
-# Academic Search & Chat AI
+# 🧠 Academic Search + Chat AI
+
+[![Laravel](https://img.shields.io/badge/Laravel-8.x-red?logo=laravel)](https://laravel.com/docs)  
+[![Elasticsearch](https://img.shields.io/badge/Elasticsearch-PHP-blue?logo=elasticsearch)](https://www.elastic.co/guide/en/elasticsearch/client/php-api/current/index.html)  
+[![Google Gemini API](https://img.shields.io/badge/Google-Gemini-green?logo=google)](https://developers.generativeai.google/)
 
 Projeto Laravel + Elasticsearch + Google Gemini para gerenciar artigos acadêmicos e fornecer um chat inteligente baseado em conteúdo.
 
@@ -14,6 +18,13 @@ Este projeto demonstra como combinar **Elasticsearch** com **IA generativa (Gemi
 - Respostas contextuais e organizadas em tópicos, citando os artigos.
 
 ---
+## ✨ Funcionalidades
+
+- 📄 Cadastro e armazenamento de artigos no Elasticsearch
+- 🔍 Busca textual e semântica híbrida em títulos, resumos e conteúdos
+- 🤖 Chat RAG baseado nos artigos encontrados
+- 📝 Respostas claras, objetivas e com referências
+- ⚡ API RESTful pronta para integração com front-end
 
 ## 🚀 Tecnologias
 
@@ -58,14 +69,14 @@ GEMINI_API_KEY=<sua-chave-gemini>
 php artisan serve
 
 
-## Endpoints da API
+## 🚀 Rotas da API
 Prefixo: `/api/artigos`
-| Método | Rota                          | Descrição                             |
-| ------ | ----------------------------- | ------------------------------------- |
-| POST   | `/`                | Criar um novo artigo                  |
-| GET    | `/`                | Listar todos os artigos               |
-| GET    | `/search/{query}` | Buscar artigos por palavra-chave      |
-| POST   | `/chat`           | Perguntar algo aos artigos (Chat RAG) |
+| Método | Rota               | Descrição                                      |
+|--------|-------------------|-----------------------------------------------|
+| POST   | `/`               | Criar um novo artigo                           |
+| GET    | `/`               | Listar todos os artigos                        |
+| GET    | `/search/{query}` | Buscar artigos por palavra-chave              |
+| POST   | `/chat`           | Perguntar algo baseado nos artigos (RAG)     |
 
 ## Exemplo JSON - **Criar artigo:**
 
