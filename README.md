@@ -156,44 +156,39 @@ Response:
   "resposta": "1. Desafio 1: Implementação técnica\n2. Desafio 2: Capacitação de professores\n3. Desafio 3: Ética e privacidade dos dados..."
 }
 ```
+### 🔧 Observações Técnicas
 
-🔧 Observações Técnicas
+- O campo `conteudo` deve ser indexado como **semantic_text** no Elasticsearch para suportar buscas semânticas avançadas.
+- Busca híbrida: combina **multi_match** em `titulo` e `resumo` com busca semântica em `conteudo`.
+- O **chat RAG** utiliza a API do **Google Gemini** para gerar respostas contextuais com base no conteúdo dos artigos.
+- Logging de erros realizado via `Log::error()` para facilitar debug e monitoramento.
 
-O campo conteudo deve ser indexado como semantic_text no Elasticsearch para suportar buscas semânticas.
+---
 
-Busca híbrida: combina multi_match em titulo e resumo + busca semântica em conteudo.
+### 📈 Sugestões de Melhorias
 
-O chat RAG utiliza Gemini API para gerar respostas com base no conteúdo dos artigos.
+- Criar front-end interativo para chat e visualização de artigos (ex.: **Vue.js**, **React** ou **Flutter**).
+- Implementar autenticação de usuários para gerenciamento de artigos privados.
+- Permitir upload de **PDFs** e extração automática de conteúdo.
+- Melhorar ranking das respostas do chat usando **ponderação semântica**.
+- Implementar cache de respostas para reduzir chamadas à API do Gemini e otimizar performance.
 
-Logging de erros via Log::error para debug.
+---
 
-📈 Sugestões de Melhorias
+### 🏁 Conclusão
 
-Criar front-end interativo para chat e visualização de artigos (Vue.js, React ou Flutter).
+Este projeto é uma **solução completa de busca e chat acadêmico**, demonstrando:
 
-Implementar autenticação de usuários para gerenciar artigos privados.
+- Indexação e busca avançada com **Elasticsearch**.
+- Integração de IA generativa via **Google Gemini**.
+- Geração de respostas **contextuais e baseadas em artigos científicos**.
+- Base sólida para projetos educativos, acadêmicos e corporativos.
 
-Permitir upload de PDFs e extração automática de conteúdo.
+---
 
-Melhorar ranking das respostas do chat usando ponderação semântica.
+### 📚 Referências
 
-Cache de respostas para reduzir chamadas à API do Gemini.
-
-🏁 Conclusão
-
-Este projeto é uma solução completa de busca e chat acadêmico, que demonstra:
-
-Indexação e busca avançada com Elasticsearch.
-
-Integração de IA generativa com Google Gemini.
-
-Geração de respostas contextuais baseadas em artigos científicos.
-
-Base sólida para projetos educativos, acadêmicos e corporativos.
-
-📚 Referências
- [Laravel Documentation](https://laravel.com/docs)
+- [Laravel Documentation](https://laravel.com/docs)
 - [Elasticsearch PHP Client](https://www.elastic.co/guide/en/elasticsearch/client/php-api/current/index.html)
 - [Google Gemini API](https://developers.generativeai.google/)
-    
 
