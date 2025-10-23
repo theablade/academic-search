@@ -21,7 +21,7 @@ class ElasticsearchService
             ->build();
     }
 
-   
+
    public function searchDocuments(string $index, string $query = null): array
 {
     try {
@@ -32,7 +32,7 @@ class ElasticsearchService
                 'query' => [
                     'bool' => [
                         'should' => [
-                           
+
                             [
                                 'multi_match' => [
                                     'query'  => $query,
@@ -40,9 +40,9 @@ class ElasticsearchService
                                     'type'   => 'best_fields',
                                 ]
                             ],
-                          
+
                             [
-                                'semantic' => [ 
+                                'semantic' => [
                                     'field' => 'conteudo',
                                     'query' => $query
                                 ]
@@ -69,20 +69,59 @@ class ElasticsearchService
     }
 }
 
-public function indexDocument(string $index, array $data): array
-{
-    try {
-        $response = $this->client->index([
-            'index' => $index,
-            'body'  => $data,
-        ]);
+ public function indexDocument(string $index, array $data): array
+    {
+        try {
+            $response = $this->client->index([
+                'index' => $index,
+                'body'  => $data,
+            ]);
 
-        // Converter a resposta do Elasticsearch para array
-        return $response->asArray();
-    } catch (Exception $e) {
-        Log::error("Erro ao indexar documento no Elasticsearch: {$e->getMessage()}");
-        throw $e;
+            return method_exists($response, 'asArray')
+                ? $response->asArray()
+                : (array) $response;
+        } catch (Exception $e) {
+            Log::error("Erro ao indexar documento no Elasticsearch: {$e->getMessage()}");
+            throw $e;
+        }
     }
-}
+
+    public function getDocument(string $index, string $id): array
+    {
+        try {
+            $response = $this->client->get([
+                'index' => $index,
+                'id' => $id
+            ]);
+
+            return method_exists($response, 'asArray')
+                ? $response->asArray()
+                : (array) $response;
+        } catch (\Exception $e) {
+            Log::error("Documento não encontrado: {$id} no índice {$index}");
+            throw $e;
+        }
+    }
+
+    /**
+     * Delete a document by ID
+     */
+    public function deleteDocument(string $index, string $id): array
+    {
+        try {
+            $response = $this->client->delete([
+                'index' => $index,
+                'id' => $id
+            ]);
+
+            return method_exists($response, 'asArray')
+                ? $response->asArray()
+                : (array) $response;
+        } catch (\Exception $e) {
+            Log::error("Erro ao deletar documento: {$id} do índice {$index}");
+            throw $e;
+        }
+    }
+
 
 }
